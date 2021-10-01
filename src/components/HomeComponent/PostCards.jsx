@@ -74,8 +74,8 @@ const PostCard = ({ postItem }) => {
         });
         const data = await res.json();
         if (res.status === 201) {
-            const newList = commentList.unshift(data);
-            setCommentList(newList);
+            commentList.unshift(data);
+            setCommentList(commentList);
             setLoading(false);
         } else {
             M.toast({ html: "Some Error Occured", classes: "#c62828 red darken-3" });
