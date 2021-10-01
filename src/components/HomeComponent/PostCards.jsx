@@ -87,66 +87,67 @@ const PostCard = ({ postItem }) => {
 
 
     return (
-        <Link to={{ pathname: "/postDetails", state: { postedBy: postItem.postedBy.name, title: postItem.title, content: postItem.content } }} style={{ color: "black", fontSize: "1.5rem" }}>
-            <div className="card grey darken-1" style={{ width: "100%" }} key={postItem._id}>
 
-                <div className="card-content white-text">
-                    <span style={{ color: 'black', fontSize: "2.5rem", fontWeight: 'normal' }} className="card-title">Posted By:- {postItem.postedBy.name.toUpperCase()}</span>
-                    <div>
-                        <h2 style={{ color: 'white' }}>{postItem.title}</h2>
-                    </div>
+        <div className="card grey darken-1" style={{ width: "100%" }} key={postItem._id}>
+
+            <div className="card-content white-text">
+                <span style={{ color: 'black', fontSize: "2.5rem", fontWeight: 'normal' }} className="card-title">Posted By:- {postItem.postedBy.name.toUpperCase()}</span>
+                <div>
+                    <h2 style={{ color: 'white' }}>{postItem.title}</h2>
+                </div>
+                <Link to={{ pathname: "/postDetails", state: { postedBy: postItem.postedBy.name, title: postItem.title, content: postItem.content } }} style={{ color: "black", fontSize: "1.5rem" }}>
                     <ReadMoreReact text={postItem.content}
                         min={30}
-                        ideal={30}
+                        ideal={10}
                         max={30}
                         readMoreText="Know More.." />
-
-                    <div style={{ marginTop: "1rem", display: "flex" }} >
-                        {liked ?
-                            (<i className="material-icons" onClick={() => { unlikePost() }}>thumb_up</i>)
-                            :
-                            (<i className="material-icons" onClick={() => { likePost() }}>thumb_down</i>)
-                        }
-                        <span><h6>{likeCount} likes</h6></span>
-                    </div>
-
-                    <div>
-                        <h5 style={{ color: 'white' }}>Comments</h5>
-                    </div>
-
-                    {commentList.map((comment, i) => {
-                        return (<div key={i}>
-                            <h6 style={{ color: '#1F51FF' }}>{comment.postedBy.name.toUpperCase()}</h6>
-                            <p style={{ color: 'black', padding: '0px' }}> {comment.text}</p>
-                            <hr />
-                        </div>)
-                    })}
-                    {loading ? <div className="loader" style={{ position: "absolute", bottom: "50%", right: " 50%" }}>
-                        <div className="preloader-wrapper small active">
-                            <div className="spinner-layer spinner-green-only">
-                                <div className="circle-clipper left">
-                                    <div className="circle"></div>
-                                </div>
-                                <div className="gap-patch">
-                                    <div className="circle"></div>
-                                </div>
-                                <div className="circle-clipper right">
-                                    <div className="circle"></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div> : <div>
-                    </div>}
-                    <div style={{ marginTop: '2rem' }}>
-                        <form onSubmit={(e) => { e.preventDefault(); postComment() }}>
-                            <input type="text" value={comment} onChange={(e) => { setComment(e.target.value) }} placeholder="Add a Comment" />
-                            <input type="submit" value="Comment" className="btn waves-effect waves-light #64b5f6 blue lighten-2" />
-                        </form>
-                    </div>
+                </Link>
+                <div style={{ marginTop: "1rem", display: "flex" }} >
+                    {liked ?
+                        (<i className="material-icons" onClick={() => { unlikePost() }}>thumb_up</i>)
+                        :
+                        (<i className="material-icons" onClick={() => { likePost() }}>thumb_down</i>)
+                    }
+                    <span><h6>{likeCount} likes</h6></span>
                 </div>
 
-            </div >
-        </Link>
+                <div>
+                    <h5 style={{ color: 'white' }}>Comments</h5>
+                </div>
+
+                {commentList.map((comment, i) => {
+                    return (<div key={i}>
+                        <h6 style={{ color: '#1F51FF' }}>{comment.postedBy.name.toUpperCase()}</h6>
+                        <p style={{ color: 'black', padding: '0px' }}> {comment.text}</p>
+                        <hr />
+                    </div>)
+                })}
+                {loading ? <div className="loader" style={{ position: "absolute", bottom: "50%", right: " 50%" }}>
+                    <div className="preloader-wrapper small active">
+                        <div className="spinner-layer spinner-green-only">
+                            <div className="circle-clipper left">
+                                <div className="circle"></div>
+                            </div>
+                            <div className="gap-patch">
+                                <div className="circle"></div>
+                            </div>
+                            <div className="circle-clipper right">
+                                <div className="circle"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div> : <div>
+                </div>}
+                <div style={{ marginTop: '2rem' }}>
+                    <form onSubmit={(e) => { e.preventDefault(); postComment() }}>
+                        <input type="text" value={comment} onChange={(e) => { setComment(e.target.value) }} placeholder="Add a Comment" />
+                        <input type="submit" value="Comment" className="btn waves-effect waves-light #64b5f6 blue lighten-2" />
+                    </form>
+                </div>
+            </div>
+
+        </div >
+
     );
 }
 
