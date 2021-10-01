@@ -97,9 +97,9 @@ const PostCard = ({ postItem }) => {
                 </div>
                 <Link to={{ pathname: "/postDetails", state: { postedBy: postItem.postedBy.name, title: postItem.title, content: postItem.content } }} style={{ color: "black", fontSize: "1.5rem" }}>
                     <ReadMoreReact text={postItem.content}
-                        min={30}
-                        ideal={30}
-                        max={30}
+                        min={15}
+                        ideal={15}
+                        max={15}
                         readMoreText="Know More.." />
                 </Link>
                 <div style={{ marginTop: "1rem", display: "flex" }} >
