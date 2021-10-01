@@ -98,7 +98,7 @@ const PostCard = ({ postItem }) => {
                 <Link to={{ pathname: "/postDetails", state: { postedBy: postItem.postedBy.name, title: postItem.title, content: postItem.content } }} style={{ color: "black", fontSize: "1.5rem" }}>
                     <ReadMoreReact text={postItem.content}
                         min={30}
-                        ideal={10}
+                        ideal={30}
                         max={30}
                         readMoreText="Know More.." />
                 </Link>
