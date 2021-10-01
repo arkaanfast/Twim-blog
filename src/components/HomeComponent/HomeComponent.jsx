@@ -115,7 +115,7 @@ const Home = () => {
         <div className="container-fluid">
 
             <div className="row" style={{ textAlign: 'center' }}>
-                <h1>These are the posts</h1>
+                {postList.length > 0 ? <h1>These are the posts</h1> : <h1>No Posts Yet!</h1>}
             </div>
             {content}
             {postList.length > 0 ? <div className="App">
