@@ -118,7 +118,7 @@ const Home = () => {
                 <h1>These are the posts</h1>
             </div>
             {content}
-            <div className="App">
+            {postList.length > 0 ? <div className="App">
                 <ReactPaginate
                     previousLabel={"Previous"}
                     nextLabel={"Next"}
@@ -130,7 +130,7 @@ const Home = () => {
                     disabledClassName={"paginationDisabled"}
                     activeClassName={"paginationActive"}
                 />
-            </div>
+            </div> : <div></div>}
         </div >
 
 
