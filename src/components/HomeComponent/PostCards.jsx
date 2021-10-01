@@ -74,7 +74,7 @@ const PostCard = ({ postItem }) => {
         });
         const data = await res.json();
         if (res.status === 201) {
-            const newList = data;
+            const newList = commentList.unshift(data);
             setCommentList(newList);
             setLoading(false);
         } else {
